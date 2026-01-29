@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ci0tbjoytgd6v" path="res://assets/floor2_left.png" id="7_jlsqs"]
 [ext_resource type="Texture2D" uid="uid://ctwc4hrxj35xb" path="res://assets/floor2_right.png" id="8_q8u5g"]
 [ext_resource type="Script" uid="uid://ctvcxcx32ewjj" path="res://scripts/hud.gd" id="9_q8u5g"]
+[ext_resource type="PackedScene" uid="uid://cuu0vg42j04ax" path="res://scenes/Enemy.tscn" id="10_lhr70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jlsqs"]
 animations = [{
@@ -42,26 +43,32 @@ size = Vector2(24, 60.5)
 size = Vector2(20, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvslj"]
-size = Vector2(640, 6)
+size = Vector2(640, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
-size = Vector2(45, 87)
+size = Vector2(37, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
-size = Vector2(103, 6)
+size = Vector2(107, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
-size = Vector2(492, 6)
+size = Vector2(496, 6)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhr70"]
 bg_color = Color(0, 0.72403765, 0.24357882, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
+size = Vector2(2, 358)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp0k4"]
+size = Vector2(2, 358)
+
 [node name="Main" type="Node2D" unique_id=1158293374]
 
 [node name="KillerFrost" type="CharacterBody2D" parent="." unique_id=328969952]
-position = Vector2(17, 331)
+position = Vector2(17, 334)
 script = ExtResource("1_rvslj")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="KillerFrost" unique_id=809763682]
@@ -72,62 +79,82 @@ animation = &"idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillerFrost" unique_id=642398644]
-position = Vector2(2, -8.75)
+position = Vector2(2, -9)
 shape = SubResource("RectangleShape2D_elqb8")
 
 [node name="LadderDetector" type="Area2D" parent="KillerFrost" unique_id=1560917527]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillerFrost/LadderDetector" unique_id=327756567]
-position = Vector2(2, -9)
+position = Vector2(2, -8)
 shape = SubResource("RectangleShape2D_c01mt")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=861318106]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1349208762]
-position = Vector2(320, 358)
+position = Vector2(320, 359)
 shape = SubResource("RectangleShape2D_rvslj")
 
 [node name="Ladder" type="Area2D" parent="." unique_id=941326638 groups=["ladder"]]
 position = Vector2(126, 280)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder" unique_id=1041904442]
-position = Vector2(-0.5, 31.5)
+position = Vector2(-0.5, 33.5)
 shape = SubResource("RectangleShape2D_vcsgt")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ladder" unique_id=693802758]
-position = Vector2(0, 33)
+position = Vector2(-7.1525574e-07, 33.5)
+scale = Vector2(0.79999995, 1.01)
 texture = ExtResource("6_c01mt")
 
 [node name="Floor2_left" type="StaticBody2D" parent="." unique_id=1982732072]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_left" unique_id=2096761568]
-position = Vector2(51.5, 272)
+position = Vector2(53.5, 272)
 shape = SubResource("RectangleShape2D_nxtc6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor2_left" unique_id=1636230302]
-position = Vector2(51.5, 272)
+position = Vector2(53.5, 272)
+scale = Vector2(1.0388349, 1)
 texture = ExtResource("7_jlsqs")
 
 [node name="Floor2_right" type="StaticBody2D" parent="." unique_id=702053443]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_right" unique_id=251723093]
-position = Vector2(394, 272)
+position = Vector2(392, 272)
 shape = SubResource("RectangleShape2D_jlsqs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor2_right" unique_id=1931601860]
-position = Vector2(394, 272)
+position = Vector2(392, 272)
+scale = Vector2(1.0081301, 1)
 texture = ExtResource("8_q8u5g")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1061132034]
 script = ExtResource("9_q8u5g")
 
 [node name="StaminaBar" type="ProgressBar" parent="HUD" unique_id=1254383592]
-offset_right = 91.0
-offset_bottom = 27.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 31.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8u5g")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lhr70")
 value = 100.0
 show_percentage = false
+
+[node name="Enemy" parent="." unique_id=783406936 instance=ExtResource("10_lhr70")]
+position = Vector2(-65, -1)
+
+[node name="Wall_Left" type="StaticBody2D" parent="." unique_id=380482885]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left" unique_id=1656218195]
+position = Vector2(1, 179)
+shape = SubResource("RectangleShape2D_lhr70")
+
+[node name="Wall_Right" type="StaticBody2D" parent="." unique_id=1128558329]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right" unique_id=409197623]
+position = Vector2(639, 179)
+shape = SubResource("RectangleShape2D_wp0k4")
 
 [connection signal="area_entered" from="KillerFrost/LadderDetector" to="KillerFrost" method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="KillerFrost/LadderDetector" to="KillerFrost" method="_on_ladder_detector_area_exited"]
