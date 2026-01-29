@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bbuqlu7636dxi" path="res://assets/killer_frost_walk_mini_02.png" id="4_c01mt"]
 [ext_resource type="Texture2D" uid="uid://ceg76cwui7nol" path="res://assets/killer_frost_walk_mini_03.png" id="5_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://c8jrg7ci16b6s" path="res://assets/ladder.png" id="6_c01mt"]
+[ext_resource type="Texture2D" uid="uid://ci0tbjoytgd6v" path="res://assets/floor2_left.png" id="7_jlsqs"]
+[ext_resource type="Texture2D" uid="uid://ctwc4hrxj35xb" path="res://assets/floor2_right.png" id="8_q8u5g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jlsqs"]
 animations = [{
@@ -36,13 +38,19 @@ animations = [{
 size = Vector2(24, 60.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
-size = Vector2(20, 57.5)
+size = Vector2(20, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvslj"]
 size = Vector2(640, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
 size = Vector2(45, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
+size = Vector2(103, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
+size = Vector2(492, 6)
 
 [node name="Main" type="Node2D" unique_id=1158293374]
 
@@ -64,7 +72,7 @@ shape = SubResource("RectangleShape2D_elqb8")
 [node name="LadderDetector" type="Area2D" parent="KillerFrost" unique_id=1560917527]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillerFrost/LadderDetector" unique_id=327756567]
-position = Vector2(2, -8.75)
+position = Vector2(2, -9)
 shape = SubResource("RectangleShape2D_c01mt")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=861318106]
@@ -83,6 +91,26 @@ shape = SubResource("RectangleShape2D_vcsgt")
 [node name="Sprite2D" type="Sprite2D" parent="Ladder" unique_id=693802758]
 position = Vector2(0, 33)
 texture = ExtResource("6_c01mt")
+
+[node name="Floor2_left" type="StaticBody2D" parent="." unique_id=1982732072]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_left" unique_id=2096761568]
+position = Vector2(51.5, 272)
+shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2_left" unique_id=1636230302]
+position = Vector2(51.5, 272)
+texture = ExtResource("7_jlsqs")
+
+[node name="Floor2_right" type="StaticBody2D" parent="." unique_id=702053443]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_right" unique_id=251723093]
+position = Vector2(394, 272)
+shape = SubResource("RectangleShape2D_jlsqs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2_right" unique_id=1931601860]
+position = Vector2(394, 272)
+texture = ExtResource("8_q8u5g")
 
 [connection signal="area_entered" from="KillerFrost/LadderDetector" to="KillerFrost" method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="KillerFrost/LadderDetector" to="KillerFrost" method="_on_ladder_detector_area_exited"]
