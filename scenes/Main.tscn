@@ -59,6 +59,9 @@ size = Vector2(496, 6)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhr70"]
 bg_color = Color(0, 0.72403765, 0.24357882, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp0k4"]
+bg_color = Color(0.6424326, 0.018838039, 9.62615e-08, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
 size = Vector2(2, 358)
 
@@ -135,9 +138,18 @@ script = ExtResource("9_q8u5g")
 offset_left = 5.0
 offset_top = 4.0
 offset_right = 96.0
-offset_bottom = 31.0
+offset_bottom = 17.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8u5g")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lhr70")
+value = 100.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=195255987]
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 96.0
+offset_bottom = 33.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_wp0k4")
 value = 100.0
 show_percentage = false
 

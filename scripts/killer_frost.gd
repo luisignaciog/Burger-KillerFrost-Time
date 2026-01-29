@@ -11,7 +11,12 @@ extends CharacterBody2D
 @export var stamina_drain_ladder := 15.0
 @export var stamina_recover := 20.0       # por segundo
 @export var tired_speed_factor := 0.5     # velocidad cuando está cansado
+@export var health_max := 100
+@export var health := 100
+@export var damage_per_hit := 25
+@export var invulnerability_time := 1.0
 
+var is_invulnerable := false
 var on_ladder := false
 @onready var sprite := $Sprite2D
 
@@ -77,7 +82,26 @@ func _physics_process(delta):
 	# Límite de pantalla (lo que ya tenías)
 	position.x = clamp(position.x, min_x, max_x)
 
+func take_damage(amount: int):
+	if is_invulnerable:
+		return
 
+	health -= amount
+	health = clamp(health, 0, health_max)
+
+	is_invulnerable = true
+	sprite.modulate = Color(1, 0.5, 0.5) # rojo claro
+
+	if health <= 0:
+		die()
+
+	await get_tree().create_timer(invulnerability_time).timeout
+	is_invulnerable = false
+	sprite.modulate = Color.WHITE
+
+func die():
+	print("Killerfrost ha muerto")
+	queue_free()
 
 func _on_ladder_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ladder"):

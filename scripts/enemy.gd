@@ -15,3 +15,7 @@ func _physics_process(delta):
 
 	if is_on_wall():
 		direction *= -1
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(25)
