@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8jrg7ci16b6s" path="res://assets/ladder.png" id="6_c01mt"]
 [ext_resource type="Texture2D" uid="uid://ci0tbjoytgd6v" path="res://assets/floor2_left.png" id="7_jlsqs"]
 [ext_resource type="Texture2D" uid="uid://ctwc4hrxj35xb" path="res://assets/floor2_right.png" id="8_q8u5g"]
+[ext_resource type="Script" uid="uid://ctvcxcx32ewjj" path="res://scripts/hud.gd" id="9_q8u5g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jlsqs"]
 animations = [{
@@ -51,6 +52,11 @@ size = Vector2(103, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
 size = Vector2(492, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhr70"]
+bg_color = Color(0, 0.72403765, 0.24357882, 1)
 
 [node name="Main" type="Node2D" unique_id=1158293374]
 
@@ -111,6 +117,17 @@ shape = SubResource("RectangleShape2D_jlsqs")
 [node name="Sprite2D" type="Sprite2D" parent="Floor2_right" unique_id=1931601860]
 position = Vector2(394, 272)
 texture = ExtResource("8_q8u5g")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1061132034]
+script = ExtResource("9_q8u5g")
+
+[node name="StaminaBar" type="ProgressBar" parent="HUD" unique_id=1254383592]
+offset_right = 91.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_q8u5g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lhr70")
+value = 100.0
+show_percentage = false
 
 [connection signal="area_entered" from="KillerFrost/LadderDetector" to="KillerFrost" method="_on_ladder_detector_area_entered"]
 [connection signal="area_exited" from="KillerFrost/LadderDetector" to="KillerFrost" method="_on_ladder_detector_area_exited"]
