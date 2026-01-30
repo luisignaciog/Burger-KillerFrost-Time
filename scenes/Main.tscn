@@ -52,7 +52,10 @@ size = Vector2(37, 91)
 size = Vector2(107, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
-size = Vector2(496, 6)
+size = Vector2(349, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjd11"]
+size = Vector2(107, 6)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8u5g"]
 
@@ -60,7 +63,7 @@ size = Vector2(496, 6)
 bg_color = Color(0, 0.72403765, 0.24357882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp0k4"]
-bg_color = Color(0.6424326, 0.018838039, 9.62615e-08, 1)
+bg_color = Color(0.7606018, 0.27332917, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr70"]
 size = Vector2(2, 358)
@@ -97,14 +100,14 @@ shape = SubResource("RectangleShape2D_c01mt")
 position = Vector2(320, 359)
 shape = SubResource("RectangleShape2D_rvslj")
 
-[node name="Ladder" type="Area2D" parent="." unique_id=941326638 groups=["ladder"]]
+[node name="Ladder_1_1" type="Area2D" parent="." unique_id=941326638 groups=["ladder"]]
 position = Vector2(126, 280)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder" unique_id=1041904442]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder_1_1" unique_id=1041904442]
 position = Vector2(-0.5, 33.5)
 shape = SubResource("RectangleShape2D_vcsgt")
 
-[node name="Sprite2D" type="Sprite2D" parent="Ladder" unique_id=693802758]
+[node name="Sprite2D" type="Sprite2D" parent="Ladder_1_1" unique_id=693802758]
 position = Vector2(-7.1525574e-07, 33.5)
 scale = Vector2(0.79999995, 1.01)
 texture = ExtResource("6_c01mt")
@@ -120,16 +123,39 @@ position = Vector2(53.5, 272)
 scale = Vector2(1.0388349, 1)
 texture = ExtResource("7_jlsqs")
 
-[node name="Floor2_right" type="StaticBody2D" parent="." unique_id=702053443]
+[node name="Floor2_middle" type="StaticBody2D" parent="." unique_id=702053443]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_right" unique_id=251723093]
-position = Vector2(392, 272)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_middle" unique_id=251723093]
+position = Vector2(318.5, 272)
 shape = SubResource("RectangleShape2D_jlsqs")
 
-[node name="Sprite2D" type="Sprite2D" parent="Floor2_right" unique_id=1931601860]
-position = Vector2(392, 272)
-scale = Vector2(1.0081301, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Floor2_middle" unique_id=1931601860]
+position = Vector2(318.5, 272)
+scale = Vector2(0.70934963, 1)
 texture = ExtResource("8_q8u5g")
+
+[node name="Floor2_right" type="StaticBody2D" parent="." unique_id=688694674]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2_right" unique_id=1748590051]
+position = Vector2(584.5, 272)
+shape = SubResource("RectangleShape2D_bjd11")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2_right" unique_id=869677690]
+position = Vector2(584.5625, 272)
+scale = Vector2(0.21773382, 1)
+texture = ExtResource("8_q8u5g")
+
+[node name="Ladder_1_2" type="Area2D" parent="." unique_id=1043570992 groups=["ladder"]]
+position = Vector2(126, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladder_1_2" unique_id=750597272]
+position = Vector2(386, 33)
+shape = SubResource("RectangleShape2D_vcsgt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ladder_1_2" unique_id=1776061535]
+position = Vector2(386, 33)
+scale = Vector2(0.79999995, 1.01)
+texture = ExtResource("6_c01mt")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1061132034]
 script = ExtResource("9_q8u5g")
